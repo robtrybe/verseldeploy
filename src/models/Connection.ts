@@ -7,8 +7,7 @@ class Connection {
     
     static async getInstance(){
         if(!Connection.connection) {
-            Connection.connection = await mongoose.connect(MONGO_URL,
-                { useNewUrlParser: true, useUnifieldTopology: true} as ConnectOptions);
+            Connection.connection = await mongoose.connect(MONGO_URL);
         }
 
         return Connection.connection;
