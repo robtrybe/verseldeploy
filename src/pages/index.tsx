@@ -1,9 +1,16 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
+import { SetStateAction, useState } from 'react'
+import axios from 'axios';
 
 const inter = Inter({ subsets: ['latin'] })
 
+interface User{
+  name: string
+}
+
 export default function Home() {
+  const [user, setUser] = useState<User | null>(null);
   return (
     <>
       <Head>
@@ -14,6 +21,13 @@ export default function Home() {
       </Head>
       <main>
         <h1>Site Simples</h1>
+        <button onClick={ async () => {
+          const response: SetStateAction<any> = await axios.get('/api/hello') as unknown;
+          const { data } = response;
+          const user = data as User;
+          setUser(user);
+        }}>Click Aqui</button>
+        <div>{ user && user.name}</div>
       </main>
     </>
   )
