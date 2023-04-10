@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URL = process.env.MONGO_DB as string
+const MONGO_URL = process.env.MONGODB_URI as string
 
 class Connection {
     private static connection:typeof mongoose;
