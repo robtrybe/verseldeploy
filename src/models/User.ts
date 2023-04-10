@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
-const { Schema } = mongoose
+const { Schema, model, models } = mongoose
 
 interface UserInterface{
     name: string
 }
 
 class User{
-    public model: mongoose.Model<UserInterface | undefined>;
+    public model: mongoose.Model<UserInterface>;
 
     constructor() {
         const schema = new Schema({
             name: String
         })
-        this.model = mongoose.models.User || mongoose.model('User', schema);
+        this.model = models.User || model('User', schema);
     }
 }
 

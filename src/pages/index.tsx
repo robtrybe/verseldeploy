@@ -22,7 +22,7 @@ export default function Home() {
       <main>
         <h1>Site Simples</h1>
         <button onClick={ async () => {
-          const response: SetStateAction<any> = await axios.get('/api/hello') as unknown;
+          const response: SetStateAction<any> = await axios.post('/api/mongo') as unknown;
           const { data } = response;
           const user = data as User;
           setUser(user);
