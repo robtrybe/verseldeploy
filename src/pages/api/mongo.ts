@@ -8,7 +8,7 @@ Connection.getInstance().then(() => console.log('conectado com sussesso'))
 import User from "@/models/User";
 
 export default async function Mongo(req: NextApiRequest, res: NextApiResponse){
-    res.status(200).json({ mongo: 'ok'});
     const userModel = new User();
-    await userModel.model.insertMany({ name: 'Robson'})
+    const result = await userModel.model.create({ name: 'Robson'})
+    res.status(200).json(result);
 }
